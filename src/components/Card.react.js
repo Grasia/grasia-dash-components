@@ -35,16 +35,19 @@ export default class Card extends Component {
                 <div id={`${id}-img-container`} style={imgContainerStyle} >
                     <img src={img} style={{height: '72px', width: '80px', margin: 'auto'}}/>
                 </div>
-                <div id={`${id}-data-items`}>
-                    {data.map((item, index) => {
-                    return (
-                        <div id={`${id}-data-item-${index}`} style={dataContainerStyle}>
-                            <span>{item.label}</span>
-                            <span style={{fontWeight: 'bold'}}>{item.data}</span>
-                        </div>
-                    );
-                })}
-                </div>
+                {data?
+                    <div id={`${id}-data-items`}>
+                        {data.map((item, index) => {
+                            return (
+                                <div id={`${id}-data-item-${index}`} style={dataContainerStyle}>
+                                    <span>{item.label}</span>
+                                    <span style={{fontWeight: 'bold'}}>{item.data}</span>
+                                </div>
+                            );
+                        })}
+                    </div>
+                    : null
+                }
                 <p id={`${id}-description`}>{description}</p>
                 <div id={`${id}-url`} style={{textAlign: 'center'}}>
                     <a href={url}>{url}</a>
