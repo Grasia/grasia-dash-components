@@ -32,7 +32,9 @@
     "prop-types": "^15.5.9",
     "ramda": "^0.25.0",
     "react": "^15.5.4",
-    "react-dom": "^15.5.4"
+    "react-dom": "^15.5.4",
+    "css-loader": "^0.28.7",
+    "style-loader": "^0.19.0"
   },
   "devDependencies": {
     "dash-components-archetype-dev": "^0.2.11",
