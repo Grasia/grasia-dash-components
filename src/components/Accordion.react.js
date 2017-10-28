@@ -3,7 +3,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '!style!css!./accordion.css'; // eslint-disable-line
 
-class TreeView extends React.PureComponent {
+class Accordion extends React.PureComponent {
 
   constructor(props) {
     super(props);
@@ -65,17 +65,27 @@ class TreeView extends React.PureComponent {
   }
 }
 
-TreeView.PropTypes = {
+Accordion.PropTypes = {
     collapsed: PropTypes.bool,
-    defaultCollapsed: PropTypes.bool,
     label: PropTypes.string.isRequired,
     className: PropTypes.string,
     itemClassName: PropTypes.string,
     childrenClassName: PropTypes.string,
-    treeViewClassName: PropTypes.string
+    treeViewClassName: PropTypes.string,
+
+    /**
+    * The ID used to identify this compnent in Dash callbacks
+    */
+    id: PropTypes.string,
+
+    /**
+     * Dash-assigned callback that should be called whenever any of the
+     * properties change
+     */
+    setProps: PropTypes.func
 }
 
-export default TreeView;
+export default Accordion;
 
 
 

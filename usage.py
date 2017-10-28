@@ -6,26 +6,57 @@ app = dash.Dash('')
 
 app.scripts.config.serve_locally = True
 
-card_data = [
-    {'label': 'Contributors', 'data': '2 000 000'},
-    {'label': 'Editions', 'data': '90 000 000'},
-    {'label': 'Pages', 'data': ' 200 000'}
-    ]
 
-card_style = {'backgroundColor': '#004481',
-              'color': 'white',
-              'border': '1px lightgrey solid'}
+def generate_card():
+    card_data = [
+        {'label': 'Contributors', 'data': '2 000 000'},
+        {'label': 'Editions', 'data': '90 000 000'},
+        {'label': 'Pages', 'data': ' 200 000'}
+        ]
 
-app.layout = html.Div([
-    html.H2('Card with image'),
-    grasia_dash_components.Card(
+    card_style = {'backgroundColor': '#004481',
+                  'color': 'white',
+                  'border': '1px lightgrey solid'}
+
+    return grasia_dash_components.Card(
         id='test-card',
         img='https://www.wikipedia.org/portal/wikipedia.org/assets/img/Wikipedia-logo-v2.png',
         data=card_data,
         style=card_style,
         url="https://www.wikipedia.org/",
         description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris quam mi, vehicula mollis libero at, congue tristique purus. Vivamus rhoncus tincidunt luctus.'
-    )
+    );
+
+
+app.layout = html.Div([
+    html.H2('Card with image'),
+    generate_card(),
+    html.Hr(),
+
+    html.H2('Simple Accordion'),
+    grasia_dash_components.Accordion(
+        id="test-tree-view",
+        label="See Options",
+        children=[
+            html.P('Option 1'),
+            html.P('Option 2'),
+            html.P('Option 3')
+        ]
+    ),
+    html.Hr(),
+
+    html.H2('Accordion with Cards inside'),
+    grasia_dash_components.Accordion(
+        id="test-tree-view-2",
+        label="Cards",
+        children=[
+            generate_card(),
+            generate_card(),
+            generate_card(),
+        ]
+    ),
+    html.Hr()
+
 ])
 
 if __name__ == '__main__':

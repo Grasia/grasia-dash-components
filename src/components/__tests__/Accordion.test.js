@@ -1,14 +1,14 @@
 import React from 'react';
 import {shallow} from 'enzyme';
-import TreeView from '../Accordion.react';
+import Accordion from '../Accordion.react';
 
-describe('TreeView', () => {
+describe('Accordion', () => {
 
     it('renders', () => {
         const component = shallow(
-            <TreeView id="test-tree-view" label="Test TreeView" collapsed={false}>
+            <Accordion id="test-tree-view" label="Test TreeView" collapsed={false}>
                 Test
-            </TreeView>
+            </Accordion>
     );
         expect(component).to.be.ok;
     });
