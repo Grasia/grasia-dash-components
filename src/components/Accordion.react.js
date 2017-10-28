@@ -1,18 +1,9 @@
 // import R from 'ramda';
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from '!style!css!./react-treeview.css';
+import '!style!css!./accordion.css'; // eslint-disable-line
 
 class TreeView extends React.PureComponent {
-//   propTypes: {
-//     collapsed: PropTypes.bool,
-//     defaultCollapsed: PropTypes.bool,
-//     nodeLabel: PropTypes.node.isRequired,
-//     className: PropTypes.string,
-//     itemClassName: PropTypes.string,
-//     childrenClassName: PropTypes.string,
-//     treeViewClassName: PropTypes.string,
-// }
 
   constructor(props) {
     super(props);
@@ -34,9 +25,8 @@ class TreeView extends React.PureComponent {
         itemClassName = '',
         treeViewClassName = '',
         childrenClassName = '',
-        nodeLabel,
+        label,
         children,
-        defaultCollapsed,
         ...rest
       } = this.props;
 
@@ -46,6 +36,12 @@ class TreeView extends React.PureComponent {
       arrowClassName += ' tree-view_arrow-collapsed';
       containerClassName += ' tree-view_children-collapsed';
     }
+
+    const nodeLabel = (
+        <span>
+          {label}
+        </span>
+    )
 
     const arrow = (
       <div
@@ -57,9 +53,9 @@ class TreeView extends React.PureComponent {
 
     return (
         <div className={'tree-view ' + treeViewClassName}>
-          <div className={'tree-view_item ' + itemClassName}>
-            {arrow}
+          <div className={'tree-view_item ' + itemClassName} onClick={this.handleClick}>
             {nodeLabel}
+            {arrow}
           </div>
           <div className={containerClassName + ' ' + childrenClassName}>
             {collapsed ? null : children}
@@ -72,7 +68,7 @@ class TreeView extends React.PureComponent {
 TreeView.PropTypes = {
     collapsed: PropTypes.bool,
     defaultCollapsed: PropTypes.bool,
-    nodeLabel: PropTypes.node.isRequired,
+    label: PropTypes.string.isRequired,
     className: PropTypes.string,
     itemClassName: PropTypes.string,
     childrenClassName: PropTypes.string,

@@ -37,7 +37,7 @@ class Demo extends Component {
                 <h2>Simple Accordion</h2>
                 <Accordion
                     id="test-tree-view"
-                    nodeLabel="Test"
+                    label="Test"
                 >
                     <p>Option 1</p>
                     <p>Option 2</p>
@@ -49,7 +49,7 @@ class Demo extends Component {
                 <h2>Accordion with Cards inside</h2>
                 <Accordion
                     id="test-tree-view-2"
-                    nodeLabel="Cards"
+                    label="Cards"
                 >
                     {cardWithImage}
                     {cardWithImage}
