@@ -67,6 +67,7 @@ class Accordion extends React.PureComponent {
 
 Accordion.PropTypes = {
     collapsed: PropTypes.bool,
+    defaultCollapsed: PropTypes.bool,
     label: PropTypes.string.isRequired,
     className: PropTypes.string,
     itemClassName: PropTypes.string,
