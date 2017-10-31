@@ -3,7 +3,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import '!style!css!./accordion.css'; // eslint-disable-line
 
-class Accordion extends React.PureComponent {
+/**
+ * Accordion is a component to show/hide a set of components
+ * I takes an optional id, the label of the accordion, whether it's collapsed
+ * or not, plus other custom classNames.
+ * The components to show/hide should be in children
+ */
+ export default class Accordion extends React.PureComponent {
 
   constructor(props) {
     super(props);
@@ -22,8 +28,9 @@ class Accordion extends React.PureComponent {
       const {
         collapsed = this.state.collapsed,
         className = '',
+        id,
         itemClassName = '',
-        treeViewClassName = '',
+        buttonClassName = '',
         childrenClassName = '',
         label,
         children,
@@ -46,13 +53,13 @@ class Accordion extends React.PureComponent {
     const arrow = (
       <div
         {...rest}
-        className={className + ' ' + arrowClassName}
+        className={buttonClassName + ' ' + arrowClassName}
         onClick={this.handleClick}
       />
     );
 
     return (
-        <div className={'tree-view ' + treeViewClassName}>
+        <div id={id} className={'tree-view ' + className}>
           <div className={'tree-view_item ' + itemClassName} onClick={this.handleClick}>
             {nodeLabel}
             {arrow}
@@ -65,19 +72,62 @@ class Accordion extends React.PureComponent {
   }
 }
 
-Accordion.PropTypes = {
-    collapsed: PropTypes.bool,
-    defaultCollapsed: PropTypes.bool,
-    label: PropTypes.string.isRequired,
-    className: PropTypes.string,
-    itemClassName: PropTypes.string,
-    childrenClassName: PropTypes.string,
-    treeViewClassName: PropTypes.string,
+Accordion.propTypes = {
 
     /**
-    * The ID used to identify this compnent in Dash callbacks
+    * The components to wrap in the accordion.
+    */
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ]),
+
+    /**
+    * A header label for the accordion.
+    */
+    label: PropTypes.string.isRequired,
+
+    /**
+     * The initial collapsed state for the accordion.
+     */
+    defaultCollapsed: PropTypes.bool,
+
+    /**
+    * Whether the accordion is collapsed or not for a controlled component.
+    *   (use only if you want to control this component externally)
+    */
+    collapsed: PropTypes.bool,
+
+    /**
+    * The ID used to identify this component in Dash callbacks
     */
     id: PropTypes.string,
+
+
+    /**
+     * className for this component
+    */
+    className: PropTypes.string,
+
+    /**
+     * className for the 'arrow', toggle button
+    */
+    buttonClassName: PropTypes.string,
+
+    /**
+     * className for the header of the accordion
+    */
+    itemClassName: PropTypes.string,
+
+    /**
+    * className for the container of the accordion wrapped components
+    */
+    childrenClassName: PropTypes.string,
+
+    /**
+     * Style objecto to override default style
+    */
+    style: PropTypes.object,
 
     /**
      * Dash-assigned callback that should be called whenever any of the
@@ -85,98 +135,3 @@ Accordion.PropTypes = {
      */
     setProps: PropTypes.func
 }
-
-export default Accordion;
-
-
-
-
-/**
- * Accordion is a component to show/hide a set of components
- * I takes an optional id, the label of the accordion, whether it's collapsed
- * or not plus, other custom className
- * The components to show/hide should be inside children
- */
-
-// export default class Accordion extends Component {
-//
-//     constructor(props) {
-//       super(props);
-//       this.state = {
-//         collapsed: props.defaultCollapsed
-//       };
-//       this.handleClick = this.handleClick.bind(this);
-//     }
-//
-//     handleClick(...args) {
-//       this.setState({ collapsed: !this.state.collapsed });
-//     }
-//
-//     render() {
-//         const {id, label, collapsed} = this.props;
-//
-//         const defaultStyle = {
-//             width: '240px'
-//         }
-//
-//         const style = R.merge(defaultStyle, this.props.style)
-//
-//         const nodeLabel = (
-//             <span onClick={this.handleClick}>
-//               {label}
-//             </span>;
-//         )
-//
-//         const toggleButton = (
-//           <div
-//             className={className + ' ' + toggleButtonClassName}
-//             onClick={this.handleClick}
-//           />
-//         );
-//
-//         return (
-//           <div className={'accordion'}>
-//             <div className={'accordion-header-container'}>
-//               {nodeLabel}
-//               {toggleButton}
-//             </div>
-//             <div className={containerClassName + ' ' + childrenClassName}>
-//               {collapsed ? null : children}
-//             </div>
-//           </div>
-//         );
-//     }
-// }
-//
-// Accordion.propTypes = {
-//     /**
-//      * The ID used to identify this component in Dash callbacks
-//      */
-//     id: PropTypes.string,
-//
-//     /**
-//      * A label to be printed in the top of the accordion
-//      */
-//     label: PropTypes.string,
-//
-//     propTypes: {
-//       collapsed: PropTypes.bool,
-//       defaultCollapsed: PropTypes.bool,
-//       nodeLabel: PropTypes.node.isRequired,
-//       className: PropTypes.string,
-//       itemClassName: PropTypes.string,
-//       childrenClassName: PropTypes.string,
-//       treeViewClassName: PropTypes.string,
-//     }
-//
-//     /**
-//      * Style objecto to override default style
-//      */
-//     style: PropTypes.object,
-//
-//     /**
-//      * Dash-assigned callback that should be called whenever any of the
-//      * properties change
-//      */
-//     setProps: PropTypes.func
-// };

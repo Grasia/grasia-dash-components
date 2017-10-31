@@ -1,6 +1,7 @@
 import grasia_dash_components
 import dash
 import dash_html_components as html
+import dash_core_components as dcc
 
 app = dash.Dash('')
 
@@ -45,15 +46,34 @@ app.layout = html.Div([
     ),
     html.Hr(),
 
-    html.H2('Accordion with Cards inside'),
+    html.H2('Accordion with a Checklist inside'),
     grasia_dash_components.Accordion(
         id="test-tree-view-2",
+        label="Checklist",
+        children=[
+            dcc.Checklist(
+                id='checklist',
+                options=[
+                    {'label': 'New York City', 'value': 'NYC'},
+                    {'label': 'Montréal', 'value': 'MTL'},
+                    {'label': 'San Francisco', 'value': 'SF'}
+                ],
+                values=['MTL', 'SF']
+            )
+        ]
+    ),
+    html.Hr(),
+
+    html.H2('Accordion with Cards inside'),
+    grasia_dash_components.Accordion(
+        id="test-tree-view-3",
         label="Cards",
         children=[
             generate_card(),
             generate_card(),
             generate_card(),
-        ]
+        ],
+        defaultCollapsed=True
     ),
     html.Hr()
 
