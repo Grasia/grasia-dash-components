@@ -39,17 +39,15 @@ class Demo extends Component {
         const option1 = {'label': 'Melons', 'value': 'melons', 'disabled': false}
         const option2 = {'label': 'Apples', 'value': 'apples',
                         'children': applesDescription,
-                        'collapseChildrenButton': true,
                         initiallyCollapsed: false
                         }
         const option3 = {'label': 'Oranges', 'value': 'oranges', 'disabled': true,
                         'children': orangesDescription,
-                        'collapseChildrenButton': true,
                         initiallyCollapsed: true
                         }
         const option4 = {'label': 'wikipedia', 'value': 'wikipedia', disabled: false,
                         children: cardWithImage,
-                        collapseChildrenButton: true
+                        alwaysExpanded: true
                         }
 
         return (

@@ -75,9 +75,22 @@ app.layout = html.Div([
         ],
         defaultCollapsed=True
     ),
+    html.Hr(),
+
+    html.H2('Collapsable checklist'),
+    grasia_dash_components.CollapsableChecklist(
+        id="collapsable-checklist",
+        options=[
+            { 'label': 'Option without children', 'value': '1' },
+            { 'label': 'Collapsable option', 'value': '2', 'children': html.P('Text') },
+            #1{ 'label': 'Not collapsable option', 'value': '3', 'children': [generate_card()], 'alwaysExpanded': True }
+        ],
+        values=['3']
+    ),
     html.Hr()
 
 ])
 
 if __name__ == '__main__':
+    print('Using version ' + grasia_dash_components.__version__ + ' of Grasia Dash Components.')
     app.run_server(debug=True)

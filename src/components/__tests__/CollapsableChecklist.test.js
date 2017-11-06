@@ -6,8 +6,10 @@ describe('CollapsableChecklist', () => {
 
     it('renders', () => {
         const values = []
-        const options = [{label: '', value:'1'},
-                        {label:'', value:'2', collapsable:true, children:[(<div></div>)]}]
+        const options = [
+                        {label: '', value:'1'},
+                        {label:'', value:'2', children:[(<div></div>)]}
+                    ]
         const component = shallow(
             <CollapsableChecklist
                 id="test-tree-view"

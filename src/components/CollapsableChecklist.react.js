@@ -1,4 +1,4 @@
-import {append, contains,  without} from 'ramda';
+import {append, contains, merge, without} from 'ramda';
 import React, {Component, PropTypes} from 'react';
 
 class Checkbox extends Component {
@@ -6,7 +6,8 @@ class Checkbox extends Component {
     constructor(props) {
         super(props);
 
-        if (props.collapsable) {
+        this.collapsable = props.children && !props.alwaysExpanded;
+        if (this.collapsable) {
             this.state = {
                 collapsed: props.initiallyCollapsed
             };
@@ -22,7 +23,6 @@ class Checkbox extends Component {
 
         const {
             children,
-            collapsable,
             disabled,
             inputClassName,
             inputStyle,
@@ -33,6 +33,7 @@ class Checkbox extends Component {
             value
         } = this.props;
 
+        const collapsable = this.collapsable;
 
         let arrow;
         let CollapsableChildren;
@@ -106,9 +107,9 @@ Checkbox.propTypes = {
     children: PropTypes.node,
 
     /**
-     * Show a button to show/hide children components of this option
+     * If set, children are always expanded and there's no way to collapse them
      */
-     collapsable: PropTypes.bool,
+     alwaysExpanded: PropTypes.bool,
 
      /**
       * Show chidlren of this checkbox to be initially collapsed (default is expanded)
@@ -127,7 +128,8 @@ Checkbox.propTypes = {
 }
 
 Checkbox.defaultProps = {
-    initiallyCollapsed: false
+    initiallyCollapsed: false,
+    alwaysExpanded: false
 }
 
 /**
@@ -173,22 +175,20 @@ export default class Checklist extends Component {
             ...rest
         } = this.props;
 
+        let optionProps;
         return (
             <div id={id} style={style} className={className}>
-                {options.map(option => (
-                    <Checkbox
+                {options.map(option => {
+                    optionProps = merge(rest,option)
+                    return(
+                        <Checkbox
                             handleOnChange = {this.handleOnChange}
                             checked = {contains(option.value, values)}
-                            collapsable = {option.children && option.collapseChildrenButton}
-                            children = {option.children}
-                            label = {option.label}
-                            value = {option.value}
-                            disabled = {option.disabled}
-                            initiallyCollapsed = {option.initiallyCollapsed}
                             key = {option.value}
-                            {...rest}
+                            {...optionProps}
                             />
-                    )
+                        );
+                    }
                 )}
             </div>
         );
@@ -223,12 +223,15 @@ Checklist.propTypes = {
             /**
              * Optinal wrapped components within this option
              */
-            children: PropTypes.node,
+             children: PropTypes.oneOfType([
+                 PropTypes.arrayOf(PropTypes.node),
+                 PropTypes.node
+             ]),
 
             /**
-             * Show a button to show/hide children components of this option
+             * If set, children are always expanded and there's no way to collapse them
              */
-             collapseChildrenButton: PropTypes.bool,
+            alwaysExpanded: PropTypes.bool,
 
             /**
              * Show chidlren of this checkbox to be initially collapsed (default is expanded)
