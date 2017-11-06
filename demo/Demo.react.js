@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, Accordion} from '../src';
+import {Card, Accordion, CollapsableChecklist} from '../src';
 
 class Demo extends Component {
     constructor() {
@@ -29,11 +29,42 @@ class Demo extends Component {
             />
         );
 
+        const applesDescription = (<div style={{marginLeft: '20px', marginBottom: '20px'}}>
+                                        <p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/Apples.jpg/97px-Apples.jpg" alt="Apples.jpg" /></p>
+                                        <p>This option selects the best and most fancy apples in the world</p>
+                                    </div>);
+
+        const orangesDescription = (<p style={{marginLeft: '15px'}}>There is no oranges available. Please come back in oranges season.</p>);
+
+        const option1 = {'label': 'Melons', 'value': 'melons', 'disabled': false}
+        const option2 = {'label': 'Apples', 'value': 'apples',
+                        'children': applesDescription,
+                        'collapseChildrenButton': true,
+                        initiallyCollapsed: false
+                        }
+        const option3 = {'label': 'Oranges', 'value': 'oranges', 'disabled': true,
+                        'children': orangesDescription,
+                        'collapseChildrenButton': true,
+                        initiallyCollapsed: true
+                        }
+        const option4 = {'label': 'wikipedia', 'value': 'wikipedia', disabled: false,
+                        children: cardWithImage,
+                        collapseChildrenButton: true
+                        }
+
         return (
             <div>
                 <h1>grasia-dash-components Demo</h1>
-
                 <hr/>
+
+                <h2>Collapsable Checklist</h2>
+                <CollapsableChecklist
+                    id="collapsable-checklist"
+                    values={[]}
+                    options={[option1, option2, option3, option4]}
+                    labelStyle= {{'display': 'block'}}
+                />
+
                 <h2>Simple Accordion</h2>
                 <Accordion
                     id="test-tree-view"
