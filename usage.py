@@ -80,10 +80,10 @@ app.layout = html.Div([
     html.H2('Collapsable checklist'),
     grasia_dash_components.CollapsableChecklist(
         id="collapsable-checklist",
-        options=[
+        children=[
             { 'label': 'Option without children', 'value': '1' },
             { 'label': 'Collapsable option', 'value': '2', 'children': html.P('Text') },
-            #1{ 'label': 'Not collapsable option', 'value': '3', 'children': [generate_card()], 'alwaysExpanded': True }
+            { 'label': 'Not collapsable option', 'value': '3', 'children': [generate_card()], 'alwaysExpanded': True }
         ],
         values=['3']
     ),

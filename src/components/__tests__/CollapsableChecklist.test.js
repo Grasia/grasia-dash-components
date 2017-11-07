@@ -14,7 +14,7 @@ describe('CollapsableChecklist', () => {
             <CollapsableChecklist
                 id="test-tree-view"
                 values={values}
-                options={options}
+                children={options}
             />
     );
         expect(component).to.be.ok;

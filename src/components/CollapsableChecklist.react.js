@@ -169,7 +169,7 @@ export default class Checklist extends Component {
         const {
             className,
             id,
-            options,
+            children,
             style,
             values,
             ...rest
@@ -178,7 +178,7 @@ export default class Checklist extends Component {
         let optionProps;
         return (
             <div id={id} style={style} className={className}>
-                {options.map(option => {
+                {children.map(option => {
                     optionProps = merge(rest,option)
                     return(
                         <Checkbox
@@ -201,7 +201,7 @@ Checklist.propTypes = {
     /**
      * An array of options
      */
-    options: PropTypes.arrayOf(
+    children: PropTypes.arrayOf(
         PropTypes.shape({
             /**
              * The checkbox's label
