@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, Accordion} from '../src';
+import {Card, Accordion, Tabs} from '../src';
 
 class Demo extends Component {
     constructor() {
@@ -17,6 +17,26 @@ class Demo extends Component {
             {label: 'Editions', data: '90 000 000'},
             {label: 'Pages', data: ' 200 000'}
         ];
+
+        const tabs = [
+          {'label': 'Control', 'icon': 'https://images-plotly.imgix.net/static/marketing/dash/direct-control-icon.png?auto=compress&auto=format', 'value': '1'},
+          {'label': 'Symbols', 'icon': 'https://images-plotly.imgix.net/static/marketing/dash/composable-icon.png?auto=compress&auto=format', 'value': '2'},
+          {'label': 'Other options', 'value': '3'},
+          {'icon': 'https://cdn.rawgit.com/plotly/dash-docs/b1178b4e/images/dash-logo-stripe.svg', 'value': '4'}
+        ];
+
+        const tabStyle = {
+          'height': '100vh',
+          'borderRight': 'thin lightgrey solid',
+          'textAlign': 'left',
+          'backgroundColor': '#072146'
+        }
+
+        const tabsStyle = {
+          'backgroundColor': '#004481',
+          'color': 'white',
+          'margin': '5px'
+        }
 
         const cardWithImage = (
             <Card
@@ -60,6 +80,18 @@ class Demo extends Component {
                 <h2>Card with image</h2>
                 {cardWithImage}
                 <hr/>
+
+                <h2>Tabs</h2>
+                <Tabs
+                    id='tabs'
+                    value='2'
+                    vertical={true}
+                    tabs={tabs}
+                    style={tabStyle}
+                    tabsStyle={tabsStyle}
+                    selectedTabStyle={{backgroundColor: 'pink'}}
+                />
+
             </div>
         );
     }
