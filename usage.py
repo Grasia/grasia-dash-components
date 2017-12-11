@@ -75,8 +75,17 @@ app.layout = html.Div([
         ],
         defaultCollapsed=True
     ),
-    html.Hr()
+    html.Hr(),
 
+    html.Div(
+        grasia_dash_components.Tabs(
+            tabs=[{'label': '123456789 More-text', 'value': 1},
+            {'label': '1234567890A More-text', 'value': 2}],
+            value=1,
+            id='tabs',
+            style={'font-weight':'bold'}
+        )
+    )
 ])
 
 if __name__ == '__main__':

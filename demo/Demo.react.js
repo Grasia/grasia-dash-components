@@ -26,7 +26,6 @@ class Demo extends Component {
         ];
 
         const tabStyle = {
-          'height': '100vh',
           'borderRight': 'thin lightgrey solid',
           'textAlign': 'left',
           'backgroundColor': '#072146'
@@ -81,9 +80,20 @@ class Demo extends Component {
                 {cardWithImage}
                 <hr/>
 
-                <h2>Tabs</h2>
+                <h2>Horizontal Tabs</h2>
                 <Tabs
-                    id='tabs'
+                    id='horizontal-tabs'
+                    value='2'
+                    vertical={false}
+                    tabs={tabs}
+                    style={tabStyle}
+                    tabsStyle={tabsStyle}
+                    selectedTabStyle={{backgroundColor: 'pink'}}
+                />
+
+            <h2>Vertical Tabs</h2>
+                <Tabs
+                    id='vertical-tabs'
                     value='2'
                     vertical={true}
                     tabs={tabs}

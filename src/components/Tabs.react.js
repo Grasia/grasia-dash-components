@@ -59,14 +59,21 @@ function Tab(props) {
 }
 
 function Tabs(props) {
+
+    const defaultTabContainerStyle = {
+        'borderBottom': props.vertical ? null : STYLES.border,
+        'borderRight': props.vertical ? STYLES.border : null,
+        'boxSizing': 'border-box',
+        'overflow': 'hidden',
+        'display': 'flex',
+        'flex-direction': props.vertical? 'column' : 'row'
+    };
+
+    const tabContainerStyle = R.merge(defaultTabContainerStyle, props.style);
+
     return (
         <div>
-            <div style={R.merge({
-                'borderBottom': props.vertical ? null : STYLES.border,
-                'borderRight': props.vertical ? STYLES.border : null,
-                'boxSizing': 'border-box',
-                'overflow': 'hidden'
-            }, props.style)}>
+            <div style={tabContainerStyle}>
                 {props.tabs.map((t, i) => {
                     const isSelected = t.value === props.value;
                     return Tab(R.merge(t, {
