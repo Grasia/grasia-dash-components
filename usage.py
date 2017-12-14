@@ -2,6 +2,8 @@ import grasia_dash_components
 import dash
 import dash_html_components as html
 import dash_core_components as dcc
+from dash.dependencies import Input, Output
+from threading import Timer
 
 app = dash.Dash('')
 
@@ -30,8 +32,16 @@ def generate_card():
 
 
 app.layout = html.Div([
+
+    html.H2('Loading dialog'),
+    html.Button('Show Loading Dialog', id='button'),
+    html.Div(id='dialog'),
+
+    html.Hr(),
+
     html.H2('Card with image'),
     generate_card(),
+
     html.Hr(),
 
     html.H2('Simple Accordion'),
@@ -44,6 +54,7 @@ app.layout = html.Div([
             html.P('Option 3')
         ]
     ),
+
     html.Hr(),
 
     html.H2('Accordion with a Checklist inside'),
@@ -62,6 +73,7 @@ app.layout = html.Div([
             )
         ]
     ),
+
     html.Hr(),
 
     html.H2('Accordion with Cards inside'),
@@ -75,6 +87,7 @@ app.layout = html.Div([
         ],
         defaultCollapsed=True
     ),
+
     html.Hr(),
 
     html.Div(
@@ -88,5 +101,22 @@ app.layout = html.Div([
     )
 ])
 
+def hide_loading_dialog(dialog):
+    #~ dialog = ''
+    print('foo')
+
+
+@app.callback(Output('dialog', 'children'),
+    [Input('button', 'n_clicks')])
+def show_loading_dialog(n_clicks):
+    if n_clicks != None:
+        dialog = grasia_dash_components.LoadingDialog(text="test")
+        t = Timer(2.0, hide_loading_dialog, args=[dialog])
+        t.start()
+        return dialog
+
 if __name__ == '__main__':
+    print('Using version ' + dcc.__version__ + ' of Dash Core Components.')
+    print('Using version ' + grasia_dash_components.__version__ + ' of Grasia Dash Components.')
+
     app.run_server(debug=True)

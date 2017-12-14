@@ -1,14 +1,13 @@
 import React, {Component} from 'react';
-import {Card, Accordion, Tabs} from '../src';
+import {Card, Accordion, Tabs, LoadingDialog} from '../src';
 
 class Demo extends Component {
     constructor() {
         super();
         this.state = {
-            value: ''
+            showLoadingDialog: false
         }
     }
-
 
     render() {
 
@@ -51,6 +50,14 @@ class Demo extends Component {
         return (
             <div>
                 <h1>grasia-dash-components Demo</h1>
+
+                <hr/>
+                <h2>Loading dialog</h2>
+                <button onClick={() => {this.setState({showLoadingDialog: true});}}>Show Loading Dialog</button>
+                {this.state.showLoadingDialog?
+                    <LoadingDialog text={"test"}></LoadingDialog>
+                    : null
+                }
 
                 <hr/>
                 <h2>Simple Accordion</h2>
