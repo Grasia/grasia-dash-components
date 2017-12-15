@@ -35,7 +35,7 @@ app.layout = html.Div([
 
     html.H2('Loading dialog'),
     html.Button('Show Loading Dialog', id='button'),
-    html.Div(id='dialog'),
+    grasia_dash_components.LoadingDialog(id="dialog", text="test", show=False),
 
     html.Hr(),
 
@@ -101,19 +101,21 @@ app.layout = html.Div([
     )
 ])
 
-def hide_loading_dialog(dialog):
-    #~ dialog = ''
+def hide_loading_dialog(show):
     print('foo')
 
 
-@app.callback(Output('dialog', 'children'),
+@app.callback(Output('dialog', 'show'),
+    events=[Event('interval-component-update-layout', 'interval')]
     [Input('button', 'n_clicks')])
 def show_loading_dialog(n_clicks):
+    print(n_clicks);
     if n_clicks != None:
-        dialog = grasia_dash_components.LoadingDialog(text="test")
-        t = Timer(2.0, hide_loading_dialog, args=[dialog])
+        t = Timer(2.0, show_loading_dialog, args=[2])
         t.start()
-        return dialog
+        return True
+    if n_clicks == 2:
+        return False
 
 if __name__ == '__main__':
     print('Using version ' + dcc.__version__ + ' of Dash Core Components.')

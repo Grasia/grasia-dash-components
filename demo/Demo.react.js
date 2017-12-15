@@ -53,11 +53,13 @@ class Demo extends Component {
 
                 <hr/>
                 <h2>Loading dialog</h2>
-                <button onClick={() => {this.setState({showLoadingDialog: true});}}>Show Loading Dialog</button>
-                {this.state.showLoadingDialog?
-                    <LoadingDialog text={"test"}></LoadingDialog>
-                    : null
-                }
+                <button onClick={() => {
+                        this.setState({showLoadingDialog: true});
+                        setTimeout(() => this.setState({showLoadingDialog: false}),3000)
+                    }}>
+                    Show Loading Dialog
+                </button>
+                <LoadingDialog text={"test"} show={this.state.showLoadingDialog}></LoadingDialog>
 
                 <hr/>
                 <h2>Simple Accordion</h2>

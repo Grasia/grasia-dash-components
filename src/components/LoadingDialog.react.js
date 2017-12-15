@@ -8,8 +8,8 @@ import '!style!css!./dialog.css'; // eslint-disable-line
  */
 export default class LoadingDialog extends Component {
     render() {
-        const {id, text} = this.props;
-
+        const {id, show, text} = this.props;
+        if (!show) return null;
         return (
             <div className="dialog-component">
                 <div className="cover"></div>
