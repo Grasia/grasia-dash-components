@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import '!style!css!./dialog.css'; // eslint-disable-line
+import '!style!css!./loading.css'; // eslint-disable-line
 
 /**
  * LoadingDialog is dialog that prompts and block the user interface

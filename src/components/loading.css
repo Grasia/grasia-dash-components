@@ -1,0 +1,83 @@
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@-webkit-keyframes spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.loader {
+    border: 16px solid #f3f3f3; /* Light grey */
+    border-top: 16px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+}
+
+
+.cover {
+    position:fixed;
+    padding:0;
+    margin:0;
+
+    top:0;
+    left:0;
+
+    width: 100%;
+    height: 100%;
+    background: rgba(180, 180, 180, 0.5);
+}
+
+
+.dialog {
+    border: medium solid #3498db;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    /* Centering on the screen: */
+    position: fixed;
+    top:25%;
+    left:40%;
+    width:60%;
+    min-height:200px;
+    margin: 0 0 0 -20%;
+}
+
+
+@keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadein {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.dialog-component {
+    cursor: progress;
+    z-index: 5;
+    opacity: 0;
+    animation: fadein 0.5s ease-in 1s forwards;
+    -moz-animation: fadein 0.5s ease-in 1s forwards; /* Firefox */
+    -webkit-animation: fadein 0.5s ease-in 1s forwards; /* Safari and Chrome */
+    -o-animation: fadein 0.5s ease-in 1s forwards; /* Opera */
+}

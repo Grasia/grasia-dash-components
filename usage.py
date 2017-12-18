@@ -106,16 +106,10 @@ def hide_loading_dialog(show):
 
 
 @app.callback(Output('dialog', 'show'),
-    events=[Event('interval-component-update-layout', 'interval')]
     [Input('button', 'n_clicks')])
 def show_loading_dialog(n_clicks):
     print(n_clicks);
-    if n_clicks != None:
-        t = Timer(2.0, show_loading_dialog, args=[2])
-        t.start()
-        return True
-    if n_clicks == 2:
-        return False
+    return n_clicks != None and n_clicks % 2 == 1
 
 if __name__ == '__main__':
     print('Using version ' + dcc.__version__ + ' of Dash Core Components.')
