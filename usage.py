@@ -34,14 +34,23 @@ app.layout = html.Div([
     generate_card(),
     html.Hr(),
 
-    html.H2('Simple Accordion'),
+    html.H2('Simple Accordions'),
     grasia_dash_components.Accordion(
-        id="test-tree-view",
+        id="test-tree-view1",
         label="See Options",
         children=[
             html.P('Option 1'),
             html.P('Option 2'),
             html.P('Option 3')
+        ]
+    ),
+    grasia_dash_components.Accordion(
+        id="test-tree-view2",
+        label="See Other Options",
+        children=[
+            html.P('Option 4'),
+            html.P('Option 5'),
+            html.P('Option 6')
         ]
     ),
     html.Hr(),

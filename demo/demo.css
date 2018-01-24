@@ -1,0 +1,15 @@
+.styledAccordion {
+    color: white;
+}
+
+.styledAccordion_item {
+    background-color: #072146;
+    padding: 5px;
+    color: white;
+}
+
+.styledAccordion_list {
+    background-color: #004481;
+    padding: 5px;
+    margin-left: 0px !important;
+}
