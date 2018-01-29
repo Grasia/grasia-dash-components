@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Card, Accordion, Tabs, LoadingDialog} from '../src';
+import '!style!css!./demo.css'; // eslint-disable-line
 
 class Demo extends Component {
     constructor() {
@@ -66,10 +67,22 @@ class Demo extends Component {
                 <Accordion
                     id="test-tree-view"
                     label="Test"
+                    accordionFixedWidth="200"
                 >
                     <p>Option 1</p>
                     <p>Option 2</p>
                     <p>Option 3</p>
+                </Accordion>
+                <Accordion
+                    id="test-tree-view2"
+                    label="Test2"
+                    itemClassName='styledAccordion_item'
+                    childrenClassName='styledAccordion_list'
+                    className='styledAccordion'
+                >
+                    <p>Option 4</p>
+                    <p>Option 5</p>
+                    <p>Option 6</p>
                 </Accordion>
                 <hr/>
 

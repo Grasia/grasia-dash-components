@@ -1,6 +1,6 @@
 {
   "name": "grasia-dash-components",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Dash UI component suite",
   "main": "lib/index.js",
   "repository": {
@@ -15,7 +15,7 @@
   "scripts": {
     "copy-lib": "copyfiles -u 1 lib/* grasia_dash_components",
     "demo": "builder run demo",
-    "install-local": "npm run copy-lib && python setup.py install",
+    "install-local": "npm run copy-lib && python setup.py install --user",
     "prepublish": "npm test && builder run build-dist && npm run copy-lib",
     "publish-all": "npm publish && python setup.py sdist upload",
     "publish-pypi": "npm run prepublish && python setup.py sdist upload",

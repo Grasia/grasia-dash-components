@@ -34,6 +34,8 @@ import '!style!css!./accordion.css'; // eslint-disable-line
         childrenClassName = '',
         label,
         children,
+        style,
+        accordionFixedWidth,
         ...rest
       } = this.props;
 
@@ -58,15 +60,22 @@ import '!style!css!./accordion.css'; // eslint-disable-line
       />
     );
 
+    const contentStyle = accordionFixedWidth? {'width': accordionFixedWidth} : {};
+
+    const childrenComponent =
+        <div className={containerClassName + ' ' + childrenClassName}>
+            {children}
+        </div>;
+
     return (
-        <div id={id} className={'tree-view ' + className}>
-          <div className={'tree-view_item ' + itemClassName} onClick={this.handleClick}>
-            {nodeLabel}
-            {arrow}
-          </div>
-          <div className={containerClassName + ' ' + childrenClassName}>
-            {collapsed ? null : children}
-          </div>
+        <div id={id} style={style}>
+            <div className={'tree-view ' + className} style={contentStyle}>
+                <div className={'tree-view_item ' + itemClassName} onClick={this.handleClick}>
+                    {nodeLabel}
+                    {arrow}
+                </div>
+                {collapsed ? null : childrenComponent }
+            </div>
         </div>
     );
   }
@@ -103,7 +112,6 @@ Accordion.propTypes = {
     */
     id: PropTypes.string,
 
-
     /**
      * className for this component
     */
@@ -123,6 +131,13 @@ Accordion.propTypes = {
     * className for the container of the accordion wrapped components
     */
     childrenClassName: PropTypes.string,
+
+    /**
+    * Set a fixed width in pixels for the accordion and the children.
+    * If you don't set this, the width of the accordion will vary depending on
+    *  whether it's collapsed or not and on the width of the content.
+    */
+    accordionFixedWidth: PropTypes.number,
 
     /**
      * Style objecto to override default style
