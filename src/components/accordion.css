@@ -1,6 +1,5 @@
 /* the tree node's style */
 .tree-view {
-  overflow-y: hidden;
   display: inline-flex;
   flex-direction: column;
 }
