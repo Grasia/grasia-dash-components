@@ -33,6 +33,8 @@ def generate_card():
 
 app.layout = html.Div([
 
+    grasia_dash_components.Import(),
+
     html.H2('Loading dialog'),
     html.Button('Show Loading Dialog', id='button'),
     grasia_dash_components.LoadingDialog(id="dialog", text="test", show=False),

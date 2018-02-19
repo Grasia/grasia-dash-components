@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, Accordion, Tabs, LoadingDialog} from '../src';
+import {Card, Accordion, Tabs, LoadingDialog, Import} from '../src';
 import '!style!css!./demo.css'; // eslint-disable-line
 
 class Demo extends Component {
@@ -50,6 +50,7 @@ class Demo extends Component {
 
         return (
             <div>
+                <Import />
                 <h1>grasia-dash-components Demo</h1>
 
                 <hr/>
