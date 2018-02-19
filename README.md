@@ -1,12 +1,12 @@
 # grasia-dash-components
 
-Dash UI component suite
-
-## Dash
-
-Go to this link to learn about [Dash][].
+[Dash](https://github.com/plotly/dash) UI component suite for [GRASIA](https://github.com/Grasia/) projects.
 
 ## Getting started
+
+If you just want to use any of the components offered by this suite, add it to your system with `pip install grasia-dash-components` and import it with `import grasia_dash_components`.
+
+If you want to hack with the code, keep reading.
 
 ```sh
 # Install dependencies
@@ -16,6 +16,29 @@ $ npm install
 $ npm start
 ```
 
+Go to this link to learn more about [Dash plugins](https://plot.ly/dash/plugins).
+
+## Play with the components
+
+If you just want to play around with the available components that grasia-dash-components offers you, just follow the instructions below:
+
+```sh
+# clone git repo and enter there
+$ git clone https://github.com/Grasia/grasia-dash-components && cd grasia-dash-components
+# create a Python3 new virtual environment
+$ virtualenv -p python3 venv/
+# activate it
+$ source venv/bin/activate
+# and install dependencies
+$ pip install -r requirements.txt
+# generate metadata.json of the Components
+$ npm run prepublish
+# launch the playground
+$ python usage.py
+```
+
+Feel free to modify usage.py source file and play with the different options of the components.
+
 ## Development
 
 ### Demo server
@@ -24,7 +47,7 @@ You can start up a demo development server to see a demo of the rendered
 components:
 
 ```sh
-$ builder run demo
+$ npm run demo
 $ open http://localhost:9000
 ```
 
