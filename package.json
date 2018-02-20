@@ -1,6 +1,6 @@
 {
   "name": "grasia-dash-components",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Dash UI component suite",
   "main": "lib/index.js",
   "repository": {
@@ -39,6 +39,6 @@
   "devDependencies": {
     "dash-components-archetype-dev": "^0.2.11",
     "enzyme": "^2.8.2",
-    "react-test-renderer": "^15.5.4"
+    "react-test-renderer": "^16.2.0"
   }
 }
