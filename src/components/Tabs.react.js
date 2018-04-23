@@ -45,7 +45,8 @@ function Tab(props) {
     const style = R.merge(defaultStyle, props.style)
 
     return (
-        <div style={style} onClick={props.onClick} key={props.value}>
+        <div className={props.className} onClick={props.onClick}
+              key={props.value} style={style}>
             {props.icon?
               <img src={props.icon} alt={props.label} width="30px" height="30px"
                 style={{'marginRight': '7px'}}
@@ -71,11 +72,22 @@ function Tabs(props) {
 
     const tabContainerStyle = R.merge(defaultTabContainerStyle, props.style);
 
+    const {className, tabsClassName, selectedTabClassName, tabsStyle,
+          selectedTabStyle} = props;
+
     return (
         <div>
-            <div style={tabContainerStyle}>
+            <div style={tabContainerStyle} className={className}>
                 {props.tabs.map((t, i) => {
                     const isSelected = t.value === props.value;
+                    let style, className;
+                    if (isSelected) {
+                      style = R.merge(tabsStyle, selectedTabStyle);
+                      className = tabsClassName + ' ' + selectedTabClassName;
+                    } else {
+                      style = tabsStyle;
+                      className = tabsClassName;
+                    }
                     return Tab(R.merge(t, {
                         isLast: i === props.tabs.length  - 1,
                         isFirst: i === 0,
@@ -83,7 +95,8 @@ function Tabs(props) {
                         isSelected: isSelected,
                         nTabs: props.tabs.length,
                         vertical: props.vertical,
-                        style: isSelected ? R.merge(props.tabsStyle, props.selectedTabStyle) : props.tabsStyle
+                        style: style,
+                        className: className
                     }));
                 })}
             </div>
@@ -100,6 +113,10 @@ Tabs.propTypes = {
      */
     style: PropTypes.object,
 
+    /**
+     * ClassName for external css styling
+     */
+    className: PropTypes.string,
 
     /**
      * Style object for each tab element
@@ -107,9 +124,19 @@ Tabs.propTypes = {
     tabsStyle: PropTypes.object,
 
     /**
+     * ClassName for each tab for external css styling
+     */
+    tabsClassName: PropTypes.string,
+
+    /**
      * Style object for currently selected tab element
      */
     selectedTabStyle: PropTypes.object,
+
+    /**
+     * ClassName for currently selected tab only for external css styling
+     */
+    selectedTabClassName: PropTypes.string,
 
     /**
      * An array of options

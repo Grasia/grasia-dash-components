@@ -112,6 +112,9 @@ class Demo extends Component {
                     style={tabStyle}
                     tabsStyle={tabsStyle}
                     selectedTabStyle={{backgroundColor: 'pink'}}
+                    className='tabs'
+                    tabsClassName='tab'
+                    selectedTabClassName='selected-tab'
                 />
 
             <h2>Vertical Tabs</h2>
@@ -123,6 +126,9 @@ class Demo extends Component {
                     style={tabStyle}
                     tabsStyle={tabsStyle}
                     selectedTabStyle={{backgroundColor: 'pink'}}
+                    className='tabs'
+                    tabsClassName='tab'
+                    selectedTabClassName='selected-tab'
                 />
 
             </div>
