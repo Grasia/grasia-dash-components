@@ -15,10 +15,10 @@
   "scripts": {
     "copy-lib": "copyfiles -u 1 lib/* grasia_dash_components",
     "demo": "builder run demo",
-    "install-local": "npm run copy-lib && python setup.py install --user",
+    "install-local": "npm run copy-lib && python3 setup.py install --user",
     "prepublish": "npm test && builder run build-dist && npm run copy-lib",
-    "publish-all": "npm publish && python setup.py sdist upload",
-    "publish-pypi": "npm run prepublish && python setup.py sdist upload",
+    "publish-all": "npm publish && python3 setup.py sdist upload",
+    "publish-pypi": "npm run prepublish && python3 setup.py sdist upload",
     "start": "builder run build-dev",
     "test": "builder run check",
     "test-watch": "builder run test-frontend-watch",
