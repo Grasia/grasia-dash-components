@@ -1,6 +1,6 @@
 {
   "name": "grasia-dash-components",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Dash UI component suite",
   "main": "lib/index.js",
   "repository": {
@@ -28,17 +28,20 @@
   "dependencies": {
     "builder": "3.2.2",
     "copyfiles": "^1.2.0",
+    "css-loader": "^0.28.7",
     "dash-components-archetype": "^0.2.11",
+    "npm": "^6.0.0",
     "prop-types": "^15.5.9",
     "ramda": "^0.25.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
-    "css-loader": "^0.28.7",
     "style-loader": "^0.19.0"
   },
   "devDependencies": {
     "dash-components-archetype-dev": "^0.2.11",
     "enzyme": "^2.8.2",
-    "react-test-renderer": "^16.2.0"
+    "karma": "^2.0.2",
+    "karma-webpack": "^3.0.0",
+    "react-test-renderer": "^16.3.2"
   }
 }
