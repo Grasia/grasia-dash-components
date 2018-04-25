@@ -76,7 +76,7 @@ function Tabs(props) {
           selectedTabStyle} = props;
 
     return (
-        <div>
+        <div id={props.id}>
             <div style={tabContainerStyle} className={className}>
                 {props.tabs.map((t, i) => {
                     const isSelected = t.value === props.value;
