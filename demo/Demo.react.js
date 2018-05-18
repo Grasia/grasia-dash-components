@@ -50,7 +50,7 @@ class Demo extends Component {
 
         return (
             <div>
-                <Import />
+                <Import src='https://codepen.io/akronix/pen/pVqzLZ.js'/>
                 <h1>grasia-dash-components Demo</h1>
 
                 <hr/>
