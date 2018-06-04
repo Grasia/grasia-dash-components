@@ -2,10 +2,13 @@
 
 [Dash](https://github.com/plotly/dash) UI component suite for [GRASIA](https://github.com/Grasia/) projects.
 
-## Getting started
+## Use it
 
 If you just want to use any of the components offered by this suite, add it to your system with `pip install grasia-dash-components` and import it with `import grasia_dash_components`.
 
+You can see a very basic example of its usage in `usage.py` or in https://github.com/Akronix/test_grasia_dash_components.
+
+## Hack it
 If you want to hack with the code, keep reading.
 
 ```sh
@@ -18,7 +21,7 @@ $ npm start
 
 Go to this link to learn more about [Dash plugins](https://plot.ly/dash/plugins).
 
-## Play with the components
+### Play with the components
 
 If you just want to play around with the available components that grasia-dash-components offers you, just follow the instructions below:
 
@@ -39,12 +42,9 @@ $ python usage.py
 
 Feel free to modify usage.py source file and play with the different options of the components.
 
-## Development
+### React demo server
 
-### Demo server
-
-You can start up a demo development server to see a demo of the rendered
-components:
+For easy developing and testing of the react components, you can start up a demo development server:
 
 ```sh
 $ npm run demo
@@ -115,15 +115,7 @@ describe.only('Foo component', () => {
         $ python my_dash_layout.py
 
 
-**TODO:** There is a workflow that links your module into `site-packages` which would
-make it unnecessary to re-run `2.` on every change: `python setup.py develop`.
-Unfortunately, this doesn't seem to work with resources defined in
-`package_data`.
-
-See https://github.com/plotly/dash-components-archetype/issues/20
-
-
-## Installing python package locally
+### Installing python package locally
 
 Before publishing to PyPi, you can test installing the module locally:
 
@@ -132,56 +124,8 @@ Before publishing to PyPi, you can test installing the module locally:
 $ npm run install-local
 ```
 
-## Uninstalling python package locally
+### Uninstalling python package locally
 
 ```sh
 $ npm run uninstall-local
 ```
-
-## Publishing
-
-For now, multiple steps are necessary for publishing to NPM and PyPi,
-respectively. **TODO:**
-[#5](https://github.com/plotly/dash-components-archetype/issues/5) will roll up
-publishing steps into one workflow.
-
-Ask @chriddyp to get NPM / PyPi package publishing accesss.
-
-1. Preparing to publish to NPM
-
-        # Bump the package version
-        $ npm version major|minor|patch
-
-        # Push branch and tags to repo
-        $ git push --follow-tags
-
-2. Preparing to publish to PyPi
-
-        # Bump the PyPi package to the same version
-        $ vi setup.py
-
-        # Commit to github
-        $ git add setup.py
-        $ git commit -m "Bump pypi package version to vx.x.x"
-
-3. Publish to npm and PyPi
-
-        $ npm run publish-all
-
-## Builder / Archetype
-
-We use [Builder][] to centrally manage build configuration, dependencies, and
-scripts.
-
-To see all `builder` scripts available:
-
-```sh
-$ builder help
-```
-
-See the [dash-components-archetype][] repo for more information.
-
-
-[Builder]: https://github.com/FormidableLabs/builder
-[Dash]: https://github.com/plotly/dash2
-[dash-components-archetype]: https://github.com/plotly/dash-components-archetype
