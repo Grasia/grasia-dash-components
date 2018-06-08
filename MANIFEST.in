@@ -2,4 +2,5 @@ include grasia_dash_components/bundle.js
 include grasia_dash_components/bundle.js.map
 include grasia_dash_components/metadata.json
 include README.md
-include LICENSE.md
+include LICENSE.txt
+include long_description.md
