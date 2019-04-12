@@ -19,7 +19,8 @@ def generate_card():
 
     card_style = {'backgroundColor': '#004481',
                   'color': 'white',
-                  'border': '1px lightgrey solid'}
+                  'border': '1px lightgrey solid',
+                  'height': '500px'}
 
     return grasia_dash_components.Card(
         id='test-card',
