@@ -1,3 +1,7 @@
+**Attention!** This repo is **unmantained**.
+
+If you are looking for the Import component, have a look at https://github.com/zouhairm/dash_defer_js_import
+
 # grasia-dash-components
 
 [Dash](https://github.com/plotly/dash) UI component suite for [GRASIA](https://github.com/Grasia/) projects.
